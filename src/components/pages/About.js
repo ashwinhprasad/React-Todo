@@ -8,7 +8,7 @@ function About() {
             <h1> About The App</h1>
             <p style={{
                 'fontFamily':"'Roboto', sans-serif"
-            }}>This is a todo-app created with react js by ashwin prasad in the process of learning react.
+            }}>This is a todo-app created by the great Ashwin Prasad who strives hard to become a monk
             </p>
         </div>
     )
