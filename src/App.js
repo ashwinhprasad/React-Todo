@@ -4,26 +4,15 @@ import './App.css';
 import Todo from './components/todos/Todos';
 import Header from './components/layout/Header';
 import AddTodo from './components/todos/AddTodo';
-import { v4 as uuidv4 } from 'uuid'
-import About from './components/pages/About'
+import { v4 as uuidv4 } from 'uuid';
+import About from './components/pages/About';
+//import axios from 'axios';
+
 
 class App extends Component {
 
   state = {
-    todos:[{
-    title:'Eat food',
-    completed:false,
-    id:uuidv4()
-  },{
-    title:'Drink Water',
-    completed:false,
-    id:uuidv4()
-  },{
-    title:'Watch Anime',
-    completed:false,
-    id:uuidv4()
-  }
-  ]
+    todos:[]
   }
 
   markComplete = (id) => {

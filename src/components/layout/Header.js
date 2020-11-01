@@ -21,7 +21,7 @@ function Header() {
 const linkStyle = {
     'color':'white',
     'textDecoration':'none',
-    'font-family' : "'Roboto', sans-serif"
+    'fontFamily' : "'Roboto', sans-serif"
 }
 
 

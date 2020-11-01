@@ -17,7 +17,7 @@ export class TodoItem extends Component {
                 'marginRight':'auto',
                 'borderRadius': '4px',
                 'textDecoration' : 'line-through',
-                "font-family":"'Teko', sans-serif"
+                "fontFamily":"'Teko', sans-serif"
             }
         } else {
             return {
@@ -32,7 +32,7 @@ export class TodoItem extends Component {
                 'display':'block',
                 'borderRadius': '4px',
                 'textDecoration' : 'none',
-                "font-family":"'Teko', sans-serif"
+                "fontFamily":"'Teko', sans-serif"
             }
         }
     }
