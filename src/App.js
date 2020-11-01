@@ -1,6 +1,11 @@
 import React ,{ Component }from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import Todo from './components/Todos'
+import Todo from './components/todos/Todos';
+import Header from './components/layout/Header';
+import AddTodo from './components/todos/AddTodo';
+import { v4 as uuidv4 } from 'uuid'
+import About from './components/pages/About'
 
 class App extends Component {
 
@@ -8,45 +13,77 @@ class App extends Component {
     todos:[{
     title:'Eat food',
     completed:false,
-    id:1
+    id:uuidv4()
   },{
     title:'Drink Water',
     completed:false,
-    id:2
+    id:uuidv4()
   },{
     title:'Watch Anime',
     completed:false,
-    id:3
+    id:uuidv4()
   }
   ]
-}
+  }
 
-markComplete = (id) => {
+  markComplete = (id) => {
 
-  this.setState({todos: this.state.todos.map((todo) => {
-    if(todo.id === id){
-      todo.completed = !todo.completed;
+    this.setState({todos: this.state.todos.map((todo) => {
+      if(todo.id === id){
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    }) 
+    })
+  }
+
+  delete = (id) => {
+    
+    let newTodoList = [];
+    let todolist = [...this.state.todos];
+    todolist.forEach((todo) => {
+      if (todo.id !== id) {
+        newTodoList.push(todo);
+      }
+    })
+    this.setState({todos:newTodoList}); 
+  }
+
+
+  addTodo = (title) => {
+    
+    if (title !== ''){
+      const newTodo = {
+        title:title.toString(),
+        completed:false,
+        id:uuidv4()
+      }
+
+      let newList = [...this.state.todos];
+      newList.push(newTodo);
+      this.setState({todos:newList})
     }
-    return todo;
-  }) 
-  })
-}
-
-
+  }
 
   render() {
     return(
-    <div className="App">
-      <h1 style={{ 
-        'textAlign':'center',
-        'color':'rgba(3, 165, 252,1)',
-        'textShadow':'black 1px 2px',
-        'textDecoration':'underline'
-       }}>
-        Your Todo App
-      </h1>
-      <Todo todos={this.state.todos} markComplete = {this.markComplete}/>
-    </div>
+      <Router>
+        <div className="App">
+          <Header />
+            <Route exact path="/" render={props => (
+              <React.Fragment>
+                <AddTodo addTodo={this.addTodo} />
+                <Todo todos={this.state.todos} delete = {this.delete} markComplete = {this.markComplete}/>
+              </React.Fragment>
+            )}/>
+
+            <Route exact path="/about" render={props => (
+              <React.Fragment>
+                <About />
+              </React.Fragment>
+            )} />
+        </div>
+      </Router>
     )
   }
 }

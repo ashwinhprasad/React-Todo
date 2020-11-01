@@ -6,31 +6,33 @@ export class TodoItem extends Component {
     getStyle = () => {
         if (this.props.todo.completed ) {
             return {
-                'background' : 'rgba(115, 145, 136,0.5)',
+                'background' : 'rgba(149, 124, 207,1)',
                 'paddingLeft' : '10px',
                 'paddingTop' : '2px',
                 'paddingBottom': '2px',
                 'width':'50%',
                 'display':'block',
-                'margin-top':'5px',
-                'margin-left':'auto',
-                'margin-right':'auto',
+                'marginTop':'5px',
+                'marginLeft':'auto',
+                'marginRight':'auto',
                 'borderRadius': '4px',
                 'textDecoration' : 'line-through',
+                "font-family":"'Teko', sans-serif"
             }
         } else {
             return {
-                'background' : 'rgba(115, 145, 136,1)',
+                'background' : 'rgba(149, 124, 207,0.4)',
                 'paddingLeft' : '10px',
                 'paddingTop' : '2px',
                 'paddingBottom': '2px',
-                'margin-left':'auto',
-                'margin-right':'auto',
-                'margin-top':'5px',
+                'marginLeft':'auto',
+                'marginRight':'auto',
+                'marginTop':'5px',
                 'width':'50%',
                 'display':'block',
                 'borderRadius': '4px',
-                'textDecoration' : 'none'
+                'textDecoration' : 'none',
+                "font-family":"'Teko', sans-serif"
             }
         }
     }
@@ -39,13 +41,13 @@ export class TodoItem extends Component {
     buttonStyle = () => {
         return ({
             'borderRadius':'10px',
-            'border':'1px black solid',
+            'border': 'none',
             'backgroundColor' : 'red',
             'width':'20px',
             'height':'20px',
             'padding':'1px',
             'float':'right',
-            'margin-right':'10px'
+            'marginRight':'10px'
         })
     }
 
@@ -53,9 +55,9 @@ export class TodoItem extends Component {
         return (
             <div style={this.getStyle()}>    
                 <p>
-                <input type="checkbox" onChange={this.props.markComplete.bind(this,this.props.todo.id)} /> {'  '}
+                <input style={{ marginRight:'20px'}} type="checkbox" onChange={this.props.markComplete.bind(this,this.props.todo.id)} /> {'  '}
                 {this.props.todo.title + ' '}
-                <button style={this.buttonStyle()} onClick={this.props.add}>X</button>
+                <button style={this.buttonStyle()} onClick={this.props.delete.bind(this,this.props.todo.id)}>X</button>
                 </p>                
             </div>
         )

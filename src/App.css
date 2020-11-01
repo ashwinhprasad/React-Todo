@@ -1,7 +1,14 @@
 body {
 
-    border:black 2px solid;
+    border:black 0px solid;
     padding-bottom: 30%;
     background-color: white;
-    outline:rgba(201, 10, 10,1) 10px solid;
+    outline:rgb(149, 124, 207) 10px solid;
+}
+
+
+h1{
+
+    font-family: 'Teko', sans-serif;
+
 }
